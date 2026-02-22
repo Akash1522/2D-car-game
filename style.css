@@ -365,3 +365,28 @@ canvas {
     }
 }
 
+/* Footer */
+.footer {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    padding: 10px;
+    z-index: 50;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-dim);
+    letter-spacing: 1px;
+}
+
+.footer .creator {
+    color: var(--road-line);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(243, 156, 18, 0.5);
+}
+
