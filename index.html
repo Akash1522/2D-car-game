@@ -11,16 +11,18 @@
     <canvas id="gameCanvas" width="400" height="600"></canvas>
 
     <div class="hud">
-        <span id="score">Score: 0</span>
-        <span id="highScore">High Score: 0</span>
-        <button id="pauseBtn" class="small-btn">Pause</button>
+        <div class="score-container">
+            <span id="score">Score: 0</span>
+            <span id="highScore">High Score: 0</span>
+        </div>
+        <button id="pauseBtn" class="small-btn">⏸ Pause</button>
     </div>
 
     <!-- Mobile Controls -->
     <div class="mobile-controls">
-        <button id="leftBtn">⬅</button>
-        <button id="nitroBtn">⚡</button>
-        <button id="rightBtn">➡</button>
+        <button id="leftBtn" class="control-btn">⬅</button>
+        <button id="nitroBtn" class="control-btn nitro">⚡ NITRO</button>
+        <button id="rightBtn" class="control-btn">➡</button>
     </div>
 </div>
 
@@ -37,15 +39,23 @@
 <!-- Overlays -->
 <div id="startOverlay" class="overlay">
     <div class="panel">
-        <h1>2D Car Racing PRO</h1>
-        <button id="startBtn">Start</button>
+        <div class="logo">🏎️</div>
+        <h1>2D Car Racing <span class="pro">PRO</span></h1>
+        <p class="subtitle">Ultimate Racing Experience</p>
+        <button id="startBtn" class="start-btn">
+            <span>▶ START GAME</span>
+        </button>
     </div>
 </div>
 
 <div id="gameOverOverlay" class="overlay hidden">
-    <div class="panel">
-        <h2 id="finalScore">Game Over</h2>
-        <button id="restartBtn">Restart</button>
+    <div class="panel game-over">
+        <div class="crash-icon">💥</div>
+        <h2>Game Over!</h2>
+        <p id="finalScore" class="final-score">Score: 0</p>
+        <button id="restartBtn" class="restart-btn">
+            <span>🔄 PLAY AGAIN</span>
+        </button>
     </div>
 </div>
 
