@@ -30,7 +30,6 @@ body {
 .game-container {
     position: relative;
     border-radius: 16px;
-    overflow: hidden;
     box-shadow: 
         0 0 40px var(--accent-glow),
         0 0 80px rgba(0, 212, 255, 0.2),
@@ -52,11 +51,18 @@ canvas {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 16px;
-    background: rgba(22, 22, 42, 0.9);
-    border-radius: 10px;
+    padding: 12px 20px;
+    background: linear-gradient(90deg, rgba(22, 22, 42, 0.95), rgba(30, 30, 58, 0.9));
+    border-radius: 12px;
     backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.score-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .hud span {
@@ -77,17 +83,18 @@ canvas {
 }
 
 .small-btn {
-    background: transparent;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 153, 204, 0.3));
     border: 2px solid var(--accent);
     color: var(--accent);
-    padding: 8px 16px;
-    border-radius: 8px;
+    padding: 10px 20px;
+    border-radius: 25px;
     cursor: pointer;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 1px;
     transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.2);
 }
 
 .small-btn:hover {
@@ -102,39 +109,48 @@ canvas {
     width: 100%;
     display: flex;
     justify-content: center;
-    gap: 25px;
+    align-items: center;
+    gap: 20px;
+    padding: 0 10px;
 }
 
-.mobile-controls button {
-    width: 70px;
-    height: 70px;
-    font-size: 28px;
+.control-btn {
+    width: 75px;
+    height: 75px;
+    font-size: 24px;
+    font-weight: 700;
     background: linear-gradient(145deg, #1e1e3a, #16162a);
     color: var(--accent);
-    border: 2px solid var(--accent);
+    border: 3px solid var(--accent);
     border-radius: 50%;
     cursor: pointer;
     transition: all 0.2s ease;
     box-shadow: 
-        0 4px 15px rgba(0, 0, 0, 0.3),
-        inset 0 2px 10px rgba(0, 212, 255, 0.1);
+        0 4px 20px rgba(0, 0, 0, 0.4),
+        inset 0 2px 10px rgba(0, 212, 255, 0.1),
+        0 0 20px rgba(0, 212, 255, 0.2);
 }
 
-.mobile-controls button:active {
-    transform: scale(0.9);
+.control-btn:active {
+    transform: scale(0.85);
     background: var(--accent);
     color: var(--bg);
-    box-shadow: 0 0 30px var(--accent-glow);
+    box-shadow: 0 0 40px var(--accent-glow);
 }
 
 #nitroBtn {
+    width: 100px;
     color: var(--road-line);
     border-color: var(--road-line);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.4),
+        inset 0 2px 10px rgba(243, 156, 18, 0.1),
+        0 0 20px rgba(243, 156, 18, 0.2);
 }
 
 #nitroBtn:active {
     background: var(--road-line);
-    box-shadow: 0 0 30px rgba(243, 156, 18, 0.5);
+    box-shadow: 0 0 50px rgba(243, 156, 18, 0.6);
 }
 
 /* Overlay panels */
@@ -155,56 +171,126 @@ canvas {
 
 .panel {
     background: linear-gradient(145deg, #1e1e3a, #16162a);
-    padding: 40px 50px;
-    border-radius: 20px;
+    padding: 45px 60px;
+    border-radius: 24px;
     text-align: center;
     border: 2px solid var(--accent);
     box-shadow: 
-        0 0 40px var(--accent-glow),
+        0 0 60px var(--accent-glow),
         0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: panelSlide 0.4s ease-out;
+}
+
+@keyframes panelSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo {
+    font-size: 64px;
+    margin-bottom: 10px;
+    animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .panel h1 {
     margin: 0 0 8px;
-    font-size: 32px;
-    font-weight: 700;
-    background: linear-gradient(90deg, var(--accent), var(--road-line));
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(90deg, var(--accent), #00ff88, var(--road-line));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
+}
+
+.panel h1 .pro {
+    background: linear-gradient(90deg, var(--road-line), #ff6b6b);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.subtitle {
+    color: var(--text-dim);
+    font-size: 14px;
+    margin: 0 0 30px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
 }
 
 .panel h2 {
-    margin: 0 0 20px;
-    font-size: 24px;
+    margin: 0 0 10px;
+    font-size: 32px;
     color: var(--danger);
-    text-shadow: 0 0 20px rgba(255, 71, 87, 0.5);
+    text-shadow: 0 0 30px rgba(255, 71, 87, 0.6);
+}
+
+.crash-icon {
+    font-size: 56px;
+    margin-bottom: 10px;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+.final-score {
+    font-size: 24px;
+    color: var(--road-line);
+    margin: 0 0 30px;
+    font-weight: 700;
+    text-shadow: 0 0 20px rgba(243, 156, 18, 0.5);
 }
 
 .panel button {
-    padding: 14px 40px;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 12px;
-    background: linear-gradient(90deg, var(--accent), #0099cc);
+    padding: 16px 50px;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 30px;
+    background: linear-gradient(90deg, var(--accent), #00ff88);
     border: none;
-    color: white;
+    color: var(--bg);
     cursor: pointer;
     text-transform: uppercase;
     letter-spacing: 2px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px var(--accent-glow);
+    box-shadow: 0 6px 30px var(--accent-glow);
+    position: relative;
+    overflow: hidden;
+}
+
+.panel button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.panel button:hover::before {
+    left: 100%;
 }
 
 .panel button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 30px var(--accent-glow);
-}
-
-.panel button:active {
-    transform: translateY(0);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px var(--accent-glow);
 }
 
 /* Animations */
@@ -213,8 +299,25 @@ canvas {
     50% { opacity: 0.7; }
 }
 
+@keyframes glow {
+    0%, 100% { 
+        box-shadow: 0 0 20px var(--accent-glow);
+    }
+    50% { 
+        box-shadow: 0 0 40px var(--accent-glow), 0 0 60px rgba(0, 212, 255, 0.3);
+    }
+}
+
 .hud span {
     animation: pulse 2s ease-in-out infinite;
+}
+
+canvas {
+    display: block;
+    background: var(--road);
+    border-radius: 12px;
+    border: 3px solid var(--accent);
+    animation: glow 3s ease-in-out infinite;
 }
 
 /* Desktop - hide mobile controls */
@@ -233,16 +336,32 @@ canvas {
     canvas {
         border-radius: 0;
         border: none;
-        border-left: 2px solid var(--accent);
-        border-right: 2px solid var(--accent);
+        border-left: 3px solid var(--accent);
+        border-right: 3px solid var(--accent);
     }
     
     .panel {
-        padding: 30px;
+        padding: 35px 30px;
         margin: 20px;
     }
     
     .panel h1 {
-        font-size: 24px;
+        font-size: 26px;
+    }
+    
+    .logo {
+        font-size: 48px;
+    }
+    
+    .control-btn {
+        width: 65px;
+        height: 65px;
+        font-size: 20px;
+    }
+    
+    #nitroBtn {
+        width: 85px;
+        font-size: 12px;
     }
 }
+
