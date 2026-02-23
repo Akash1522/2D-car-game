@@ -15,7 +15,22 @@
             <span id="score">Score: 0</span>
             <span id="highScore">High Score: 0</span>
         </div>
-        <button id="pauseBtn" class="small-btn">⏸ Pause</button>
+        <div class="level-mission-info">
+            <span id="levelDisplay">Level 1</span>
+            <div class="mission-container">
+                <span class="mission-label" id="missionLabel">🎯</span>
+                <div class="mission-bar-bg">
+                    <div id="missionProgress" class="mission-bar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="nitro-container">
+            <span class="nitro-label">⚡ NITRO</span>
+            <div class="nitro-bar-bg">
+                <div id="nitroBar" class="nitro-bar"></div>
+            </div>
+        </div>
+        <button id="pauseBtn" class="small-btn">⏸</button>
     </div>
 
     <!-- Mobile Controls -->
@@ -36,12 +51,34 @@
     <source src="assets/nitro.mp3" type="audio/mp3">
 </audio>
 
-<!-- Overlays -->
 <div id="startOverlay" class="overlay">
     <div class="panel">
         <div class="logo">🏎️</div>
         <h1>2D Car Racing <span class="pro">PRO</span></h1>
         <p class="subtitle">Ultimate Racing Experience</p>
+        
+        <!-- Game Mode Selection -->
+        <div class="mode-select">
+            <button id="levelModeBtn" class="mode-btn selected">🎮 Level Mode</button>
+            <button id="freeModeBtn" class="mode-btn">∞ Free Mode</button>
+        </div>
+        
+        <!-- Level Selection -->
+        <div class="level-select" id="levelSelectArea">
+            <p class="level-title">Select Level (1-50):</p>
+            <div class="level-buttons" id="levelButtons"></div>
+            <div class="mission-display" id="missionDisplay">
+                <span class="mission-title">🎯 Rookie:</span> <span class="mission-desc">Score 500 points</span>
+            </div>
+        </div>
+        
+        <!-- Free Mode Info -->
+        <div class="free-mode-info hidden" id="freeModeInfo">
+            <p>🏁 Endless gameplay - play as long as you can!</p>
+            <p>⚡ Use nitro wisely</p>
+            <p>🏆 Beat your high score</p>
+        </div>
+        
         <button id="startBtn" class="start-btn">
             <span>▶ START GAME</span>
         </button>
