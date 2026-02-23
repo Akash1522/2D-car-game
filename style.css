@@ -45,10 +45,10 @@ canvas {
 }
 
 .hud {
-    position: absolute;
+    position: fixed;
     top: 12px;
-    left: 12px;
-    right: 12px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -58,6 +58,9 @@ canvas {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(0, 212, 255, 0.3);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    max-width: 400px;
+    width: 90%;
 }
 
 .score-container {
@@ -183,6 +186,10 @@ canvas {
     box-shadow: 0 0 20px var(--accent-glow);
 }
 
+.small-btn:active {
+    transform: scale(1);
+}
+
 .mobile-controls {
     position: absolute;
     bottom: -110px;
@@ -213,7 +220,7 @@ canvas {
 }
 
 .control-btn:active {
-    transform: scale(0.85);
+    transform: scale(1);
     background: var(--accent);
     color: var(--bg);
     box-shadow: 0 0 40px var(--accent-glow);
@@ -230,6 +237,7 @@ canvas {
 }
 
 #nitroBtn:active {
+    transform: scale(1);
     background: var(--road-line);
     box-shadow: 0 0 50px rgba(243, 156, 18, 0.6);
 }
@@ -374,6 +382,10 @@ canvas {
     box-shadow: 0 12px 40px var(--accent-glow);
 }
 
+.panel button:active {
+    transform: scale(1);
+}
+
 /* Animations */
 @keyframes pulse {
     0%, 100% { opacity: 1; }
@@ -425,6 +437,7 @@ canvas {
         flex-direction: column;
         align-items: center;
         padding-bottom: 100px;
+        padding-top: 60px;
     }
     
     canvas {
@@ -434,6 +447,7 @@ canvas {
         max-width: 400px;
         border-radius: 12px;
         border: 2px solid var(--accent);
+        margin-top: 60px;
     }
     
     .hud {
@@ -443,9 +457,10 @@ canvas {
         right: 0;
         padding: 5px 8px;
         flex-wrap: wrap;
-        gap: 5px;
-        z-index: 10;
+        gap: 3px;
+        z-index: 1000;
         justify-content: space-between;
+        border-radius: 0;
     }
     
     .score-container {
@@ -497,6 +512,12 @@ canvas {
     .small-btn {
         padding: 4px 8px;
         font-size: 10px;
+        min-width: 50px;
+    }
+    
+    .small-btn:active {
+        transform: none;
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
     }
     
     .mobile-controls {
@@ -671,6 +692,10 @@ canvas {
     color: var(--bg);
 }
 
+.level-btn:active {
+    transform: scale(1);
+}
+
 .level-btn.selected {
     background: var(--accent);
     color: var(--bg);
@@ -733,6 +758,10 @@ canvas {
     color: var(--bg);
 }
 
+.mode-btn:active {
+    transform: scale(1);
+}
+
 .mode-btn.selected {
     background: var(--accent);
     color: var(--bg);
@@ -757,3 +786,4 @@ canvas {
 .level-select.hidden {
     display: none;
 }
+
